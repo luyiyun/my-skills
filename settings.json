@@ -1,0 +1,36 @@
+{
+  "install_path": "~/.codex/skills-test",
+  "local_skills_dir": "skills",
+  "third_party_skills": [
+    {
+      "name": "obsidian-markdown",
+      "type": "git",
+      "repo": "https://github.com/kepano/obsidian-skills.git",
+      "subpath": "skills/obsidian-markdown"
+    },
+    {
+      "name": "obsidian-bases",
+      "type": "git",
+      "repo": "https://github.com/kepano/obsidian-skills.git",
+      "subpath": "skills/obsidian-bases"
+    },
+    {
+      "name": "json-canvas",
+      "type": "git",
+      "repo": "https://github.com/kepano/obsidian-skills.git",
+      "subpath": "skills/json-canvas"
+    },
+    {
+      "name": "obsidian-cli",
+      "type": "git",
+      "repo": "https://github.com/kepano/obsidian-skills.git",
+      "subpath": "skills/obsidian-cli"
+    },
+    {
+      "name": "defuddle",
+      "type": "git",
+      "repo": "https://github.com/kepano/obsidian-skills.git",
+      "subpath": "skills/defuddle"
+    }
+  ]
+}

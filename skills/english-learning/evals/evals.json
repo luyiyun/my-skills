@@ -1,0 +1,26 @@
+{
+  "skill_name": "english-learning",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "学英语",
+      "expected_output": "当前目录存在 english-learning-profile.md（已提前放置）。Claude应该：1) 直接在当前目录查找english-learning-profile.md，找到后读取；2) 不询问用户vault路径；3) 根据profile中的current-topic-index确定今日主题；4) 展示streak信息并开始教学",
+      "files": ["english-learning-profile.md"],
+      "scenario": "profile_exists"
+    },
+    {
+      "id": 2,
+      "prompt": "开始英语学习",
+      "expected_output": "当前目录不存在 english-learning-profile.md。Claude应该：1) 直接在当前目录查找english-learning-profile.md，找不到；2) 告知用户未找到档案；3) 询问用户是要切换到正确目录，还是在当前目录新建档案；4) 不擅自开始教学",
+      "files": [],
+      "scenario": "profile_missing"
+    },
+    {
+      "id": 3,
+      "prompt": "daily English",
+      "expected_output": "当前目录存在 english-learning-profile.md，记录显示已有学习历史（streak=5天，topic-index=2即语法）。Claude应该：1) 读取profile后直接开始，展示正确的streak数字；2) 今日主题为语法精讲；3) 优先选择profile中weak-points记录的薄弱点作为语法主题",
+      "files": ["english-learning-profile.md"],
+      "scenario": "returning_user"
+    }
+  ]
+}

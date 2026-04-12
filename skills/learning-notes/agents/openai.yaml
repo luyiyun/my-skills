@@ -1,0 +1,4 @@
+interface:
+  display_name: "学习笔记"
+  short_description: "用中文讨论概念并生成结构化学习笔记"
+  default_prompt: "Use $learning-notes 用中文和我讨论一个概念，并在讨论充分后整理成结构化的 Obsidian 风格学习笔记。"

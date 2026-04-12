@@ -1,0 +1,26 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "my-skills"
+version = "0.1.0"
+description = "Utilities for managing a personal Codex skills repository."
+requires-python = ">=3.9"
+dependencies = []
+
+[project.scripts]
+my-skills = "my_skills.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/my_skills"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "/AGENTS.md",
+  "/pyproject.toml",
+  "/settings.json",
+  "/skills",
+  "/src",
+  "/tests",
+]

@@ -1,0 +1,104 @@
+{
+  "skill_name": "auto-uv",
+  "evals": [
+    {
+      "id": 1,
+      "eval_name": "run-python-script",
+      "prompt": "在当前目录创建一个简单的Python脚本hello.py，打印'Hello World'，然后运行它",
+      "expected_output": "使用uv run hello.py执行脚本，而不是直接使用python",
+      "files": [],
+      "assertions": [
+        {
+          "description": "使用了uv run执行Python脚本",
+          "type": "tool_use",
+          "tool": "Bash",
+          "pattern": "uv run"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "eval_name": "install-pandas",
+      "prompt": "帮我安装pandas库，用于数据分析",
+      "expected_output": "使用uv add pandas安装，而不是pip install pandas",
+      "files": [],
+      "assertions": [
+        {
+          "description": "使用了uv add安装依赖",
+          "type": "tool_use",
+          "tool": "Bash",
+          "pattern": "uv add"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "eval_name": "data-analysis-workflow",
+      "prompt": "帮我创建一个数据分析脚本，读取CSV文件并计算每列的平均值",
+      "expected_output": "自动初始化UV项目（如果需要），添加pandas依赖，使用uv run执行脚本",
+      "files": [],
+      "assertions": [
+        {
+          "description": "检查了UV项目状态或初始化了项目",
+          "type": "tool_use",
+          "tool": "Bash",
+          "pattern": "(uv init|pyproject.toml)"
+        },
+        {
+          "description": "使用了uv add安装依赖",
+          "type": "tool_use",
+          "tool": "Bash",
+          "pattern": "uv add"
+        },
+        {
+          "description": "使用了uv run执行脚本",
+          "type": "tool_use",
+          "tool": "Bash",
+          "pattern": "uv run"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "eval_name": "flask-web-app",
+      "prompt": "帮我创建一个简单的Flask Web应用，包含一个返回'Hello Flask'的路由",
+      "expected_output": "使用UV初始化项目，添加flask依赖，使用uv run运行应用",
+      "files": [],
+      "assertions": [
+        {
+          "description": "使用了uv init初始化项目",
+          "type": "tool_use",
+          "tool": "Bash",
+          "pattern": "uv init"
+        },
+        {
+          "description": "使用了uv add安装flask",
+          "type": "tool_use",
+          "tool": "Bash",
+          "pattern": "uv add.*flask"
+        },
+        {
+          "description": "使用了uv run运行flask",
+          "type": "tool_use",
+          "tool": "Bash",
+          "pattern": "uv run"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "eval_name": "skill-calls-python",
+      "prompt": "使用seaborn skill创建一个数据可视化图表，展示正态分布的直方图",
+      "expected_output": "当seaborn skill需要执行Python代码时，应该使用uv run来运行",
+      "files": [],
+      "assertions": [
+        {
+          "description": "使用了uv run执行Python相关任务",
+          "type": "tool_use",
+          "tool": "Bash",
+          "pattern": "uv run"
+        }
+      ]
+    }
+  ]
+}
