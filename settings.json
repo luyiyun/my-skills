@@ -1,6 +1,8 @@
 {
-  "install_path": "~/.codex/skills-test",
-  "local_skills_dir": "skills",
+  "install_path": "~/.codex/skills",
+  "first_party_skills_dir": "skills/first-party",
+  "imported_skills_dir": "skills/imported",
+  "add_confirmation_threshold": 5,
   "third_party_skills": [
     {
       "name": "obsidian-markdown",
@@ -31,6 +33,12 @@
       "type": "git",
       "repo": "https://github.com/kepano/obsidian-skills.git",
       "subpath": "skills/defuddle"
+    },
+    {
+      "name": "zotero-paper-reader",
+      "type": "git",
+      "repo": "https://github.com/FuZhiyu/ResearchProjectTemplate.git",
+      "subpath": "ProjectExample/.claude/skills/zotero-paper-reader"
     }
   ]
 }
