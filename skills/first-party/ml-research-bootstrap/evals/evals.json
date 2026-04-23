@@ -1,0 +1,49 @@
+{
+  "skill_name": "ml-research-bootstrap",
+  "evals": [
+    {
+      "id": 1,
+      "eval_name": "general-ml-bootstrap",
+      "prompt": "请在当前空目录里初始化一个基于 uv 的机器学习方法学研究项目，包名叫 `my_method`。我希望它是一个可复用的 Python 包，主代码放在 `src/my_method`，同时保留 `src/my_method_simulate` 和 `src/my_method_case` 作为后续模拟实验和案例验证入口。请补上根目录 `main.py`、`AGENTS.md` 和最小 smoke tests，并配置 ruff 与 pyright。",
+      "expected_output": "技能应先检查当前目录，再使用 `uv init --package` 初始化通用 ML 项目，创建主包、simulate/case 结构、动态最小 CLI、`tests/`、`AGENTS.md`，并落实类型注解、ruff、pyright 约定。",
+      "files": [],
+      "expectations": [
+        "检查当前仓库与目录结构，而不是直接假设项目为空。",
+        "默认使用 `uv init --package` 作为初始化方式。",
+        "创建 `src/my_method`、`src/my_method_simulate`、`src/my_method_case`、根目录 `main.py`、`AGENTS.md` 和 `tests/`。",
+        "为 `main.py` 设计最小必要的子命令，而不是机械生成固定的 `train/simulate/case` 模板。",
+        "给项目补上 ruff、pyright 和最小 smoke tests。",
+        "如果 `uv init --package` 生成了默认的 `[project.scripts]`，要确保它与最终入口一致，而不是留下失效脚本。"
+      ]
+    },
+    {
+      "id": 2,
+      "eval_name": "pytorch-dl-bootstrap",
+      "prompt": "帮我初始化一个基于 PyTorch 的深度学习方法学研究项目，包名叫 `deep_seq`。主包里请按 estimator/data/model/trainer/config/metrics 分层组织代码，主入口是一个 sklearn 风格但不继承 sklearn 基类的 estimator，同时要支持 save、load、test。模拟实验和案例验证仍然放在 `src/deep_seq_simulate` 和 `src/deep_seq_case`。",
+      "expected_output": "技能应识别出这是 PyTorch DL 模式，并在主包中建立 estimator/data/model/trainer/config/metrics 的最小可用骨架，使用 Pydantic config、torchmetrics 优先策略、主包相对导入与 simulate/case 绝对导入约定，同时创建 CLI、AGENTS.md 和最小测试。",
+      "files": [],
+      "expectations": [
+        "识别项目属于 PyTorch 深度学习模式，而不是只生成通用 ML 轻量骨架。",
+        "在 `src/deep_seq` 中创建 `config.py`、`data.py`、`model.py`、`trainer.py`、`metrics.py`、`estimator.py` 和 `__init__.py`。",
+        "让 estimator 提供 `fit`、`predict`，并额外提供 `save`、`load`、`test`。",
+        "主包内部优先相对导入，`simulate` 与 `case` 优先绝对导入主包。",
+        "为新项目创建最小 smoke tests，并要求完成后运行 ruff、pyright 与 pytest。"
+      ]
+    },
+    {
+      "id": 3,
+      "eval_name": "existing-repo-major-update",
+      "prompt": "我已经有一个基于 uv 的研究仓库了。请在现有结构基础上给它新增一块较大的模拟实验功能，同时保持项目继续遵守我们这套规范：补对应单元测试，更新根目录 AGENTS.md，把新的运行入口整合进 main.py，但不要把整个仓库推倒重来。",
+      "expected_output": "技能应先检查已有仓库结构，再采用外科手术式增量修改；更新 `main.py` 时按现有运行流扩展最小必要子命令；同步补单元测试并把新的架构/工作规范写入 `AGENTS.md`，最后重新运行 ruff、pyright 和 pytest。",
+      "files": [],
+      "expectations": [
+        "先检查现有仓库状态、已有 CLI、已有测试与已有 `AGENTS.md`，而不是直接重构整仓。",
+        "使用最小增量方式补模拟实验功能，并扩展 `main.py` 的必要子命令。",
+        "把新增功能对应的测试一起补上，而不是只改实现不改测试。",
+        "对已有 `AGENTS.md` 采取合并补充规范的策略，而不是默认整篇重写。",
+        "在完成修改后重新运行 ruff、pyright 和 pytest。",
+        "若项目位于父级 `uv` workspace 中，要显式判断是否需要避免自动 workspace 注册。"
+      ]
+    }
+  ]
+}
